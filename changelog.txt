@@ -2,6 +2,16 @@ Changelog:
 ==========
 + neue Funktionen       * Änderungen/Bugfixes
 
+Version 1.1 RR
+-------------
+* Forum Extended eingebunden
+* Bugfix Forum (dierektantwort/moderation usw.)
+* Erweiterung am Forum für mehr Berechtigung und Ansichtsänderungen usw. Möglich von bbcode auf ckeditor zu wächseln.
+* Anbindung an Oracle ermöglicht.
+* Newsletter Erweiterung um viele Featers.
+* Designerweiterung.
+* Sharebutton and Dankefunktion
+
 Version 1.1 Q
 -------------
 * Sicherheitsupdates im Bezug auf mögliche SQL-Injections
@@ -27,36 +37,36 @@ Version 1.1 P
 Version 1.1 O
 -------------
 * Altersberechnung im Kalender
-* Lastwarstatistiken f�r einzelne Teams verbessert
+* Lastwarstatistiken für einzelne Teams verbessert
 * Fehler bei einigen mit PHP 5.3 und E_DEPRECATED
-* einige fehlende escapes bei der Forenadministration eingef�gt
-* bigdump aktualisiert (u.a. PHP 5.3 Anpassungen) und beim Backup andere Zeilenenden eingef�gt
+* einige fehlende escapes bei der Forenadministration eingefüt
+* bigdump aktualisiert (u.a. PHP 5.3 Anpassungen) und beim Backup andere Zeilenenden eingefügt
 * Fehler mit POP3 bei SMTP Versand behoben
-* offene Best�tigungen (Adminbereich admin.php?puser), Account L�schen hingef�gt
+* offene Bestätigungen (Adminbereich admin.php?puser), Account Löschen hingefgü
 * Adminbereich Upload von Gallery und Smilies Sicherheitsfehler behoben
-* Wars Bild l�schen Sicherheitsfehler behoben
-* User-Datails bessere Fehlerausgabe bei ung�ltigem Aufruf
-* Antispam und einfacher Namensschutz bei Gallerykommentaren eingef�gt
-* L�schen von (Unter-)Forenkategorien korrigiert
+* Wars Bild löschen Sicherheitsfehler behoben
+* User-Datails bessere Fehlerausgabe bei ungültigem Aufruf
+* Antispam und einfacher Namensschutz bei Gallerykommentaren eingefügt
+* Löschen von (Unter-)Forenkategorien korrigiert
 * Shoutbox nicht mehr zu breit wegen Antispam
 * install.sql korrigiert (groupid fehlte in prefix_usercheck)
 
 Version 1.1 N
 -------------
-* Sicherheitsl�cke in der include/includes/func/statistic.php behoben (Danke an www.securityplanet.de f�r den Hinweis)
-  und weiter einige Formulare im Adminbereich (Userverwaltung) gegen Cross-Site_Request_Forgery -> http://de.wikipedia.org/wiki/Cross-Site_Request_Forgery gesch�tzt
-* SMTP Funktion �berarbeitet, damit eine breitere Auswahl an Anbietern genutzt werden kann
-* Newsletter etwas �berarbeitet, so dass auch Usergruppen gew�hlt werden k�nnen, und HTML Mails m�glich sind
-* Bei Downloads wird der eigentliche Pfad zur Datei nicht mehr �bertragen, und leichter Leecherschutz
-* Antispam ge�ndert, so dass Fehler im G�stebuch etc. nicht mehr auftreten sollten
-* Charset Encoding in der class/design.php hinzugef�gt, um auftretende Fehler mit Umlauten beizukommen,
+* Sicherheitslücke in der include/includes/func/statistic.php behoben (Danke an www.securityplanet.de für den Hinweis)
+  und weiter einige Formulare im Adminbereich (Userverwaltung) gegen Cross-Site_Request_Forgery -> http://de.wikipedia.org/wiki/Cross-Site_Request_Forgery geschützt
+* SMTP Funktion Überarbeitet, damit eine breitere Auswahl an Anbietern genutzt werden kann
+* Newsletter etwas Überarbeitet, so dass auch Usergruppen gewählt werden können, und HTML Mails möglich sind
+* Bei Downloads wird der eigentliche Pfad zur Datei nicht mehr Übertragen, und leichter Leecherschutz
+* Antispam geändert, so dass Fehler im Gästebuch etc. nicht mehr auftreten sollten
+* Charset Encoding in der class/design.php hinzugefügt, um auftretende Fehler mit Umlauten beizukommen,
   wer nach dem Update falsche Umlaute hat, sollte einfach die alte class/design.php (von Version M z.B.) nutzen
 * Kleinere Fehler behoben bei:
 	Alterberechnung im Kalender
-	L�schen in der Shoutbox
+	Löschen in der Shoutbox
 	Datum bei RSS der News
 	Gruppen im Adminbereich
-* debug(), sendpm() und icmail() etwas verbessert (nur f�r Entwickler interessant)
+* debug(), sendpm() und icmail() etwas verbessert (nur für Entwickler interessant)
 
 Version 1.1 M
 -------------
@@ -68,17 +78,17 @@ Version 1.1 L
 
 Version 1.1 K
 -------------
-+ Toggle WYSIWYG beim SelfpageEditor im Adminbereich hinzugef�gt
++ Toggle WYSIWYG beim SelfpageEditor im Adminbereich hinzugefügt
 
-* Fehler beim �ndern der Modulrechte in der Userverwaltung behoben + L�schen von Usern
-* Fehler beim Antispam behoben, wenn 2 Seiten gleichzeitig ge�ffnet wurden
+* Fehler beim Ändern der Modulrechte in der Userverwaltung behoben + Löschen von Usern
+* Fehler beim Antispam behoben, wenn 2 Seiten gleichzeitig geöffnet wurden
 * Fehler beim Backup mit "speziellen" Datenbanknamen behoben (z.B. kilu.de)
-* Fehler im Adminbereich Navigation behoben, die beim �ndern eines Eintrages auftreten konnten
-* Fehler beim Selfpageeditor im Zusammenhang mit Datien die neu.php hei�en behoben
-* Fehler in der Shoutbox behoben, wo es m�glich war ohne Rechte zu einzutragen
+* Fehler im Adminbereich Navigation behoben, die beim Ändern eines Eintrages auftreten konnten
+* Fehler beim Selfpageeditor im Zusammenhang mit Datien die neu.php heißen behoben
+* Fehler in der Shoutbox behoben, wo es möglich war ohne Rechte zu einzutragen
 * Fehler bei PMs mit der Sortierung behoben (Dank an boehserdavid ;))
 * Fehler im Kalender, wo Termine am 1. des Monats um 0:00 Uhr nicht angezeigt wurden (Dank an boehserdavid ;))
-* Im Kontankformular l�ngere E-Mailadressen erlaubt
+* Im Kontankformular längere E-Mailadressen erlaubt
 * Gallerykategorien im Adminbereich von PicOfX werden ordentlich sortiert angezeigt
 
 Version 1.1 J
@@ -86,45 +96,45 @@ Version 1.1 J
 + design-Klasse etwas erweitert
 
 * Filtern in der Memberliste (Multipages)
-* L�schen von Usern im Adminbereich - Teams
-* Inkompatibilit�t mit alten MySQL Versionen beim Kalender
+* Löschen von Usern im Adminbereich - Teams
+* Inkompatibilität mit alten MySQL Versionen beim Kalender
 * Design- und Shoutbox leiten beim Aufruf nun auch wieder auf die Seite, auf der man war (menu Klasse erweitert)
 * mysql.php angepasst, damit keine Fehler bei alten Installationsdateien von Modulen kommen
 * Fehler bei Windowsservern und der Onlineanzeige behoben
 * Fehler beim Ausloggen behoben, wenn user.php nicht verlinkt war
 * Einige Fehler im Zusammenhang mit Selfpages/-boxes behoben
-* Sicherheitsl�cke geschlossen
-* cipher-Klasse durch AzDGCrypt-Klasse ersetzt (damit auch PHP4 unterst�tzt wird) -> !!SMTP-Passwort muss neu gespeichert werden!!
-* Antispam etwas �berarbeitet
+* Sicherheitslücke geschlossen
+* cipher-Klasse durch AzDGCrypt-Klasse ersetzt (damit auch PHP4 unterstützt wird) -> !!SMTP-Passwort muss neu gespeichert werden!!
+* Antispam etwas Überarbeitet
 
 Version 1.1 I
 -------------
 + teams.php kann individuelle teams Kombinationen anzeigen (Bsp.: ?teams-show-1-4-2)
-+ Auswahl beim L�schen einer Gallerykategorie
-+ Bilder k�nnen in andere Kategorien verschoben werden
-+ Backupsystem �berarbeitet
-+ �berarbeitung der Klassen tpl,menu und design (f�r Entwickler in die Doku schauen) - update von xajax auf 0.5b4
-+ ausf�hrliche Fehleranzeige bei Datenbankfehlern f�r (Co-)Admins
-+ Mails k�nnen �ber SMTP versendet werden
++ Auswahl beim Löschen einer Gallerykategorie
++ Bilder können in andere Kategorien verschoben werden
++ Backupsystem Überarbeitet
++ Überarbeitung der Klassen tpl,menu und design (für Entwickler in die Doku schauen) - update von xajax auf 0.5b4
++ ausführliche Fehleranzeige bei Datenbankfehlern für (Co-)Admins
++ Mails können Über SMTP versendet werden
 + Seite mit Serverinformationen im Adminbereich
-+ Profil L�nderauswahl alphabetisch sortiert
++ Profil Länderauswahl alphabetisch sortiert
 + Antispam im Forum
-+ User kann sich selbst l�schen und L�schung eines Users sauberer (Gallery, Avatar, DB Eintr�ge)
-+ Suche nach Beitr�gen oder Autor
-+ Eigene Beitr�ge von jedem zu betrachten, Link zum ersten neuen Beitrag bei neue Themen, nun forum-aeit/aubt/augt statt search-*
++ User kann sich selbst Löschen und Löschung eines Users sauberer (Gallery, Avatar, DB Einträge)
++ Suche nach Beiträgen oder Autor
++ Eigene Beiträge von jedem zu betrachten, Link zum ersten neuen Beitrag bei neue Themen, nun forum-aeit/aubt/augt statt search-*
 + In Memberliste Namen filtern
 
 * Beachtung von Teamrechten bei Suche
 * Fehleranzeige fest in index.php/admin.php verankert
 * Gallerykategorien werden nur noch bei ausreichenden Rechten angezeigt
 * RSS/ATOM korrigiert/verbessert + Ein-/Mehrzahl Kommentare
-* Beim �ndern eines Namens werden auch Themen ber�cksichtig
-* PM-Ansicht �berarbeitet (Sortierung + Zeit)
-* Admins(ab Siteadmin) und Moderatoren k�nnen in geschlossenen Themen antworten
-* Fehler f�r Modulrechtler beim Freischalten von Joinus-Freigaben behoben
-* neuer Wysiwyg-Editor im Selfpage und Box Bereich (der Editor ist wesentlich besser und hat viel mehr M�glichkeiten)
+* Beim ändern eines Namens werden auch Themen berücksichtig
+* PM-Ansicht Überarbeitet (Sortierung + Zeit)
+* Admins(ab Siteadmin) und Moderatoren können in geschlossenen Themen antworten
+* Fehler für Modulrechtler beim Freischalten von Joinus-Freigaben behoben
+* neuer Wysiwyg-Editor im Selfpage und Box Bereich (der Editor ist wesentlich besser und hat viel mehr Möglichkeiten)
 * Team Name/Bild wird auch bei Einzelansicht angezeigt
-* Moderatoren k�nnen nur noch in von ihnen verwaltete Foren verschieben
+* Moderatoren können nur noch in von ihnen verwaltete Foren verschieben
 (* Alle kurzen SQL Inserts wurden verbessert)
 
 Version 1.1 H
@@ -138,43 +148,43 @@ Version 1.1 H
 
 Version 1.1 G
 -------------
-+ Avatare kann man nun auch im Adminbereich hochladen, das Avatar wird dort nicht auf Gr��e gepr�ft
-+ Antispam f�r Kontaktformular
-+ Team wird beim Joinus nun gespeichert, damit ist es m�glich den User direkt ins Team aufzunehmen
-+ Teamfunktion ohne L�schen des Users �nderbar
-+ Joinus, man kann w�hlen ob die Regeln komplett angezeigt werden
-+ Beim �ndern eines Downloads kann Datum nun aktualisiert werden
-+ Beim �ndern des Namens eines Users, kann auch der Name bei allen Forenposts ge�ndert werden
-+ Option, dass Modulrecht Gruppen, nur f�r eigene Gruppe(n) gilt
++ Avatare kann man nun auch im Adminbereich hochladen, das Avatar wird dort nicht auf Größe geprüft
++ Antispam für Kontaktformular
++ Team wird beim Joinus nun gespeichert, damit ist es möglich den User direkt ins Team aufzunehmen
++ Teamfunktion ohne Löschen des Users Änderbar
++ Joinus, man kann wählen ob die Regeln komplett angezeigt werden
++ Beim Ändern eines Downloads kann Datum nun aktualisiert werden
++ Beim Ändern des Namens eines Users, kann auch der Name bei allen Forenposts geändert werden
++ Option, dass Modulrecht Gruppen, nur für eigene Gruppe(n) gilt
 
 * Konfigurationspunkt: Standard Avatar anzeigen? funktioniert nun
-* Falsches Escapen beim �ndern einer News behoben (kein \" und \' mehr)
-* Adminbereich f�rs Forum �berarbeitet und Fehler behoben
-* Fehler im HMENU und TITLE beim Erstellen und �ndern von Themen und Posts behoben
-* Avatar l�schen im Adminmen� funktionierte nicht, korrigiert
-* Vorauswahl der Kategorie im Download/Links-Adminmen� korrigiert, nicht mehr keine sondern ausgew�hlte Kategorie
+* Falsches Escapen beim Ändern einer News behoben (kein \" und \' mehr)
+* Adminbereich fürs Forum Überarbeitet und Fehler behoben
+* Fehler im HMENU und TITLE beim Erstellen und Ändern von Themen und Posts behoben
+* Avatar Löschen im Adminmenü funktionierte nicht, korrigiert
+* Vorauswahl der Kategorie im Download/Links-Adminmenü korrigiert, nicht mehr keine sondern ausgewählte Kategorie
 * Linkkategorie wird bei Links mit im Tabellenkopf angezeigt
 
 Version 1.1 F
 -------------
 + Verwaltung von noch nicht registrierten Users
 + Dateirechte werden nun beim Upload gesetzt
-+ Posts werden beim User nun heruntergez�hlt, wenn ein Post gel�scht wird
-+ Shoutbox �berarbeitet mit Einstellungen unter Konfiguration
++ Posts werden beim User nun heruntergezählt, wenn ein Post gelöscht wird
++ Shoutbox Überarbeitet mit Einstellungen unter Konfiguration
 + Antispam konfigurierbar
-+ Kasse �ndern hinzugef�gt
-+ Awards �ndern hinzugef�gt und auch Awards f�r User bzw. irgendwen :P
-+ mehrere (Unter-)Kategorien f�r das Forum
-+ Module werden im Adminbereich nun auch in der �bersicht angezeigt
-+ Erstellen von Thumbnails im  GIF Format, wenn der Webspace es unterst�tzt
++ Kasse Ändern hinzugefügt
++ Awards Ändern hinzugefügt und auch Awards für User bzw. irgendwen :P
++ mehrere (Unter-)Kategorien für das Forum
++ Module werden im Adminbereich nun auch in der Übersicht angezeigt
++ Erstellen von Thumbnails im  GIF Format, wenn der Webspace es unterstützt
 
-* Selfpage verbessert: kein .php als Endung mehr n�tig, View Source muss vorm Speichern nicht mehr entfernt werden
+* Selfpage verbessert: kein .php als Endung mehr nötig, View Source muss vorm Speichern nicht mehr entfernt werden
 * Fehlerkorrektur im PM-System
 * Downloads nur noch mit ausreichenden Rechten herunterladbar
 * Links werden nun sortiert dargestellt
 * Avatarupload nur noch wenn erlaubt
 * Escapen im Forum korrigiert (kein \" und \' mehr)
 * Betreff bei E-Mails jetzt mit Leerzeichen
-* �nderungen in der Sprachdatei
-* G�stebuchbug (wahrscheinlich) behoben
-* Beim Upload werden nun auch Gro�geschriebene Dateiendungen akzeptiert
+* Änderungen in der Sprachdatei
+* Gästebuchbug (wahrscheinlich) behoben
+* Beim Upload werden nun auch Großgeschriebene Dateiendungen akzeptiert
