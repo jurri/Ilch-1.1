@@ -1,52 +1,92 @@
-<table class="border">
-    <tr>
-        <th colspan="2" class="Chead">
-            <strong>{_lang_preview}</strong>
-        </th>
-    </tr><tr>
-        <td class="Cmite">{txt}</td>
-    </tr>
+<table width="100%" border="0" cellspacing="1" class="border" cellpadding="5">
+  <tr>
+	  <th colspan="2" height="20" class="Chead">
+		  <b>{_lang_preview}</b>
+		</th>
+	</tr><tr>
+    <td class="Cmite">{txt}</td>
+  </tr>
 </table>
+<br /><br />
 {EXPLODE}
-<script type="text/javascript">
+<script language="JavaScript" type="text/javascript">
 <!--
-    function form_check() {
-        document.form.submit.disabled = true;
-        document.form.submit.style.background = '#FF0000';
-        document.form.submit.value = '{_lang_send}...';
-        return true;
-    }
+  function form_check() {
+	  document.form.submit.disabled = true;
+ 	  document.form.submit.style.background = '#FF0000';
+    document.form.submit.value = '{_lang_send}...';
+    return true;
+	}
+	
+function switch_html(switchinput){
+    var div = document.getElementById('txtdiv');
+    var txtarea = document.getElementById('txt');
+	if(switchinput == '2'){
+		var txtarea = document.getElementById('txt');
+		var oldtxt = txtarea.value;
+        document.getElementById('bbcode_buttons').style.display = 'none';
+		
+		var objCKE = CKEDITOR.replace( 'txt', {
+			baseHref: 'include/includes/ckeditor/',
+			height : 400
+		}) ;
+		
+        if (switch_html.arguments[0] == '2') {
+            document.forms["form"].html[1].checked = true;
+			objCKE.setData( document.getElementById('vorschau_td').innerHTML );
+        } else {
+            objCKE.setData( oldtxt );
+        }	
+		div.innerHTML = "<textarea class='ckeditor' id='txt' name='txt' cols='100' rows='10'>"+oldtxt+"</textarea>";
+	}
+	
+	if(switchinput == '1'){
+		var objCKE = CKEDITOR.instances['txt'];
+        var oldtxt = objCKE.getData();
+        CKEDITOR.remove(objCKE);
+
+		var oldtxt = txtarea.value;
+        document.getElementById('bbcode_buttons').style.display = 'block';
+		div.innerHTML = "<textarea id='txt' name='txt' cols='100' rows='10'>"+oldtxt+"</textarea>";
+	}
+}
 //-->
 </script>
-<script type="text/javascript" src="include/includes/js/bbcode.js"></script>
+<script src='include/includes/ckeditorfull/ckeditor.js'></script>
+<link rel='stylesheet' href='include/includes/ckeditorfull/skins/moono/editor.css'>
 <form action="index.php?forum-newtopic-{fid}" method="POST" name="form" onSubmit="return form_check()">
-    <table class="border">
-        <tr>
-            <th colspan="2" class="Chead"><strong>{_lang_writeanewtopic}</strong></th>
-        </tr>
-        <tr>
-            <td class="Cmite"><strong>{_lang_topicforum}</strong></td>
-            <td class="Cnorm"><input type="text" size="40" value="{topic}" maxlength="40" tabindex="1" name="topic"></td>
-        </tr>
-        {name}
-        <tr>
-            <td colspan="2" class="Cmite"><strong>{_lang_writeyourpost}</strong></td>
-        </tr>
-        <tr>
-            <td class="Cmite text-center ilch_vertikal_top" rowspan="2">{SMILIES}</td>
-            <td class="Cnorm bg_color_bbcode">{__BBCodeButtons__}</td>
-        </tr>
-        <tr>
-            <td class="tdweight80 Cnorm"><textarea class="tdweight98" cols="75" rows="15" name="txt" tabindex="3">{txt}</textarea></td>
-        </tr>
-        <tr>
-            <td class="Cmite">{_lang_options}</td>
-            <td class="Cnorm"><input id="topic_alert" type="checkbox" value="yes" name="topic_alert" /><label for="topic_alert"> {_lang_mailonreply}</label></td>
-        </tr>
-        {antispam}
-        <tr class="Cmite">
-            <td></td>
-            <td><input type="submit" name="priview" value="{_lang_preview}" accesskey="v">&nbsp;<input type="submit" name="submit" value="{_lang_formsub}" accesskey="s"></td>
-        </tr>
-    </table>
+
+<script type="text/javascript" src="include/includes/js/bbcode.js"></script>
+
+<table width="100%" border="0" cellspacing="1" class="border" cellpadding="5">
+  <tr>
+	  <th colspan="2" height="20" class="Chead">
+		  <b>{_lang_writeanewtopic}</b>
+		</th>
+	</tr><tr>
+	  <td class="Cmite"><b>Thema</b></td>
+		<td class="Cnorm"><input type="text" size="40" value="{topic}" maxlength="40" tabindex="1" name="topic"></TD>
+	</tr>{name}<tr>
+	  <td colspan="2" height="20" class="Cmite">
+		  <b>{_lang_writeyourpost}</b><input type="radio" name="html" value="0" onchange="switch_html(1);" {sel0} /><label for="html">BBCode</label><input type="radio" name="html" value="1" onchange="switch_html(2);" {sel1} /><label for="html">HTML (CKEditor)</label>
+		</td>
+	</tr><tr>
+	  <td class="Cmite" rowspan="2" valign="top">{SMILIES}</td>
+	  <td class="Cnorm">
+      <div style="display:block;" id="bbcode_buttons">
+      <!-- BB Code START -->{__BBCodeButtons__}<!-- BB Code ENDE -->
+		</div>
+		</td>
+	</tr><tr>
+    <td width="80%" class="Cnorm">
+		  <div id="txtdiv"><textarea style="width: 98%" class='' name="txt" id="txt" rows="15" cols="55" tabindex="2">{txt}</textarea></div>
+    </td>
+  </tr><tr>
+    <td class="Cmite">{_lang_options}</td>
+    <td class="Cnorm"><input id="topic_alert" type="checkbox" value="yes" name="topic_alert" /><label for="topic_alert"> {_lang_mailonreply}</a></td>
+	</tr>{antispam}<tr class="Cmite">
+    <td></td>
+    <td><input type="submit" name="priview" value="{_lang_preview}" accesskey='v' />&nbsp;<input type="submit" name="submit" value="{_lang_formsub}" accesskey='s' /></td>
+	</tr>
+</table>
 </form>

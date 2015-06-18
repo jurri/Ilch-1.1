@@ -19,7 +19,7 @@ $design = new design ( $title , $hmenu, 1);
 $design->header();
 			
 if (!loggedin()) {
-  echo '<div class="text-center"><span class="ilch_hinweis_rot">G&auml;ste d&uuml;rfen keine Beitr&auml;ge editieren<br><a href="index.php?user-regist">Registrieren</a> oder <a href="index.php?user-login">Einloggen</a> um deine Beitr&auml;ge editieren zu k&ouml;nnen</span></div>';
+  echo 'Gäste dürfen keine Beiträge editieren<br><a href="index.php?user-regist">Registrieren</a> / <a href="index.php?user-login">Einloggen</a> um deine Beiträge editieren zu können';
   $design->footer(1);
 }
 
@@ -45,7 +45,8 @@ if ($_SESSION['klicktime'] > ($dppk_time - 15) OR empty($txt) OR !empty($_POST['
   $tpl = new tpl ( 'forum/postedit' );
       
   if (isset($_POST['priview'])) {
-    $tpl->set_out('txt', bbcode(unescape($txt)), 0);
+    //$tpl->set_out('txt', bbcode(unescape($txt)), 0);
+	$tpl->set_out('txt', FE_Vote2HTML(1, bbcode(unescape($txt)), true), 0);
   }
   
   if (empty($txt)) {
@@ -56,12 +57,15 @@ if ($_SESSION['klicktime'] > ($dppk_time - 15) OR empty($txt) OR !empty($_POST['
     'tid' => $tid,
     'oid' => $oid,
     'txt' => (isset($_POST['priview']) ? escape_for_fields(unescape($txt)) : escape_for_fields($txt)),
-    'SMILIES' => getsmilies()
+    'SMILIES' => getsmilies(),
+		'sel0'=> 'checked',
+		'sel1'=> ''
   );
   $tpl->set_ar_out($ar,1);
-  $erg = db_query('SELECT erst, txt FROM `prefix_posts` WHERE tid = "'.$tid.'" ORDER BY time DESC LIMIT 0,5');
+  $erg = db_query('SELECT id, erst, txt FROM `prefix_posts` WHERE tid = "'.$tid.'" ORDER BY time DESC LIMIT 0,5');
   while ($row = db_fetch_assoc($erg)) {
     $row['txt'] = bbcode($row['txt']);
+	$row['txt'] = FE_Vote2HTML($row['id'], $row['txt'], true);
     $tpl->set_ar_out($row, 2);
   }
   $tpl->out(3);  
@@ -75,6 +79,7 @@ if ($_SESSION['klicktime'] > ($dppk_time - 15) OR empty($txt) OR !empty($_POST['
   
   db_query("UPDATE `prefix_posts` set txt = '".$txt."' WHERE id = ".$oid);
 
+FE_CreateVote($oid, $txt);
 	$page = ceil ( ($aktTopicRow->rep+1)  / $allgAr['Fpanz'] );
   wd('index.php?forum-showposts-'.$tid.'-p'.$page.'#'.$oid,$lang['changepostsuccessful']);
 }

@@ -1,0 +1,12 @@
+<table><tr><td colspan="3" style="font-size:13px; font-weight:bold;">{question}</td></tr>
+{EXPLODE}
+<tr>
+{_if_{showvoters}=='1'}
+    <td colspan="2" class="smalfont">{voters}</td></tr><tr>
+{/_endif}
+    <td width="100"><table height="15"><tr><td bgcolor="#3300cc" width="{res_percent}"></td></tr></table></td>
+    <td width="20">{result}</td>
+    <td>{option}</td>
+</tr>
+{EXPLODE}
+<tr><td>Votes: {gesvotes}</td></tr></table>

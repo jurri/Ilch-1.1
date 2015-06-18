@@ -1,33 +1,63 @@
-<div class="ilch_float_r">{NEWTOPIC}</div><br>
-<table class="border tablebordertop">
-    <tr class="Chead">
-        <th></th>
-        <th><strong>{_lang_topic}</strong></th>
-        <th class="text-center"><strong>{_lang_answers}</strong></th>
-        <th class="text-center"><strong>{_lang_hits}</strong></th>
-        <th class="text-center"><strong>{_lang_update}</strong></th>
-    </tr>
-    {EXPLODE}
-    <tr>
-        <td class="Cnorm forumord text-center"><img src="include/images/forum/{ORD}.gif"></td>
-        <td class="Cnorm">
-            {VORT} <a href="index.php?forum-showposts-{id}">{name}</a><br>
-            <span class="smalfont">{_lang_author}: {erst}</span>
-        </td>
-        <td class="Cmite text-center">{rep}</td>
-        <td class="Cmite text-center">{hit}</td>
-        <td class="Cdark text-center">
-            <span class="smalfont">
-                {date} {_lang_oclock}
-                <br>
-                <a class="smalfont" href="index.php?forum-showposts-{id}-p{page}#{pid}">{_lang_lastfrom}: {last}</a>
-        </td>
-    </tr>
-    {EXPLODE}
+	<link rel="stylesheet" type="text/css" href="include/includes/css/forum/userfarben.css" media="screen">
+
+<span style="font-weight: bold; font-size: 22px; font-family: Verdana, Arial, Helvetica, sans-serif;">{CATNAME}</span><br />
+Gehe zu Seite: {MPL}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="15%"><br />
+    {NEWTOPIC}<br /></td>
+    <td width="85%" align="left" valign="bottom"><strong>{HMENU}</strong></td>
+  </tr>
 </table>
-<br>
-{MPL}
+<hr />
+<br />
+<table width="100%" border="0" cellspacing="1" cellpadding="5" class="border">
+          <tr class="Chead">
+                  <th colspan="2"></td>
+                    <b>{_lang_topic}</b>
+                    </td>
+                <th width="7%" align="center"><b>{_lang_answers}</b></td>
+                <th width="7%" align="center"><b>{_lang_hits}</b></td>
+    <th width="30%" align="center"><b>{_lang_update}</b></td>    </tr>
 {EXPLODE}
-<div>
+  <tr>
+          <td class="Cdark"><img src="include/images/forum/{TOP}.png" border="0"></td>
+    <td width="56%" class="Cnorm">{VORT} <a href="index.php?forum-showposts-{id}">{name}</a><br />
+    <span class="smalfont">{_lang_author}: {erst}</span></td>
+          <td align="center" class="Cdark"><img src="include/images/forum/antwort.png" border="0" />{rep}</td>
+                <td align="center" class="Cdark"><img src="include/images/forum/ansicht.png" border="0" />{hit}</td>
+                <td align="left" class="Cnorm">
+                  <span class="smalfont">
+                                <img src="include/images/forum/post.png" border="0" width="14" height="14">{_lang_lastfrom}: <a class="smalfont" href="index.php?forum-showposts-{id}-p{page}#{pid}">{last}</a><br /> {date}     </span>    </td>
+  </tr>
+{EXPLODE}
+</table>
+<br /><br />
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="border">
+  <tr>
+    <td colspan="2" align="left" class="Chead" height="25"><div style="padding-left:10px;"><b>Foren - Legende</b></div></td>
+  </tr>
+  <tr class="Cnorm">
+  <td width="8%" height="40" align="center" valign="middle" class="Cdark"><img src="include/images/forum/legende/legend.png" width="36" height="36" border="0"></td>
+    <td width="92%" height="40" align="left" valign="middle">
+	<div style="padding-left:9px;">
+	<span class="Recht-9" style="font-size:10px;">Admin</span> , 
+	<span class="Recht-8" style="font-size:10px;">CoAdmin</span> , 
+	<span class="Recht-7" style="font-size:10px;">SiteAdmin</span> , 
+	<span class="Recht-6" style="font-size:10px;">Leader</span> ,
+	<span class="Recht-5" style="font-size:10px;">CoLeader</span> , 
+	<span class="Recht-4" style="font-size:10px;">Member</span> , 
+	<span class="Recht-3" style="font-size:10px;">Trialmember</span> , 
+	<span class="Recht-2" style="font-size:10px;">SuperUser</span> , 
+	<span class="Recht-1" style="font-size:10px;">User</span> , 
+	</div></td>
+  </tr>
+  <tr class="Cnorm">
+    <td class="Cdark" colspan="2" align="center" height="40"><img src="include/images/forum/ntop.png" alt="neue Beitr&auml;ge" border="0" align="absmiddle" /> &nbsp;{_lang_newposts}
+      &nbsp;&nbsp;<img src="include/images/forum/top.png" alt="keine neuen Beitr&auml;ge" border="0" align="absmiddle" /> &nbsp;{_lang_nonewposts}
+      &nbsp;&nbsp;<img src="include/images/forum/ctop.png" alt="Thema geschlossen" border="0" align="absmiddle" /> &nbsp; {_lang_topicclosed} &nbsp;&nbsp;<img src="include/images/forum/htop.png" alt="brisantes Thema" border="0" align="absmiddle" /> &nbsp; brisantes Thema</td>
+  </tr>
+</table>
+<br />
+{EXPLODE}
 <a href="index.php?forum-editforum-{id}">{_lang_editforum}</a>	
-</div>

@@ -1,0 +1,38 @@
+{EXPLODE}
+<center>
+<form action="index.php?forum-newpost-{tid}" method="POST" name="form" onSubmit="return form_check()">
+<table width="75%" border="0" cellspacing="1" class="border" cellpadding="5">
+    <tr class="Chead" >
+		<th height="25"><b>Schnellantwort</b>          </th>       
+	</tr>
+    <tr class="Cnorm" >
+		<td height="23" align="left" valign="middle">
+<script type="text/javascript" src="include/includes/js/BBCodeGlobal.js"></script><script type="text/javascript" src="include/includes/js/interface.js"></script>
+
+<!--Fett Button! -->
+<a href="javascript:bbcode_insert('b','Gib hier den Text an der formatiert werden soll.')"><img src="include/images/icons/bbcode/bbcode_bold.png" alt="Fett formatieren" title="Fett formatieren" width="23" height="22" border="0"></a>
+<!--Kursiv Button! -->	
+<a href="javascript:bbcode_insert('i','Gib hier den Text an der formatiert werden soll.')"><img src="include/images/icons/bbcode/bbcode_italic.png" alt="Kursiv formatieren" title="Kursiv formatieren" width="23" height="22" border="0"></a>
+<!--Unterstrichen Button! -->
+<a href="javascript:bbcode_insert('u','Gib hier den Text an der formatiert werden soll.')"><img src="include/images/icons/bbcode/bbcode_underline.png" alt="Unterstrichen formatieren" title="Unterstrichen formatieren" width="23" height="22" border="0"></a>
+<!--Hyperlink Button! -->
+<a href="javascript:bbcode_insert_with_value('url','Gib hier den namen des links an.','Gib hier die Adresse zu welcher verlinkt werden soll.')"><img src="include/images/icons/bbcode/bbcode_url.png" alt="Hyperlink einf&uuml;gen" title="Hyperlink einf&uuml;gen" width="23" height="22" border="0"></a>
+<!--Zentriert Button! -->
+<a href="javascript:bbcode_code_insert('center','0')"><img src="include/images/icons/bbcode/bbcode_center.png" alt="Mittig ausrichten" title="Mittig ausrichten" width="23" height="22" border="0"></a>
+
+<a href="javascript:bbcode_insert('img','Gib hier die Adresse des Bildes an.\\nHinweise: Die Breite und H&ouml;he des Bildes ist auf eingeschr&auml;nkt und w&uuml;rde verkleinert dargstellt werden.\\nEs ist möglich ein Bild rechts oder links von anderen Elementen darzustellen, indem man [img=left] oder [img=right] benutzt.')"><img src="include/images/icons/bbcode/bbcode_image.png" alt="Bild einf&uuml;gen" title="Bild einf&uuml;gen" width="23" height="22" border="0"></a> 
+
+		</td>          
+	</tr>
+<tr>
+    <td colspan="2" width="100%" class="Cnorm" align="center" valign="middle">
+      <textarea style="width: 99%" name="txt" rows="3" cols="50" tabindex="2">{txt_qp}</textarea>    </td>
+  </tr>
+  <tr class="Cnorm">    
+    <td colspan="2">
+    <input type="submit" name="sub_fastinsert" value="{_lang_formsub}" accesskey='s' /></td>
+   </tr>
+</table>
+</form>
+<br /></center>
+{EXPLODE}

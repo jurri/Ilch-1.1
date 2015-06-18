@@ -1,0 +1,21 @@
+<form action="index.php?forum-inform" method="post">
+{POSTID}
+<table width="98%" border="0" cellspacing="1" class="border" cellpadding="5" id="table1">
+  <tr class="Chead">
+    <th colspan="2" height="20">Beitrag melden</th>
+  </tr><tr class="Cmite">
+    <td height="20">Benachrichtigung an Moderator:</td>
+    <td height="20">
+      <select name="mod">
+      <option value="noone">Bitte ausw&auml;hlen</option>
+      {MODS}
+      </select></td>
+  </tr><tr>
+    <td colspan="2" class="Cnorm"><textarea name="reason" rows=14 cols=71>{TXT}</textarea></td>
+  </tr><tr>
+    <td>&nbsp; {ANTISPAM} &nbsp;</td>
+ </tr>
+<tr>
+<td><input type="submit"  name="submit" value="Abschicken"></td>
+</tr>
+</table></form>

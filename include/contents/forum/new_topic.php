@@ -40,12 +40,13 @@ if (($_SESSION['klicktime'] + 15) > $dppk_time OR empty($topic) OR empty($txt) O
 
   $name = '';
   if ( !loggedin() ) {
-    $name  = '<tr><td class="Cmite"><b>'.$lang['name'].'</b></td>';
+    $name  = '<tr><td class="Cmite"0><b>'.$lang['name'].'</b></td>';
     $name .= '<td class="Cnorm"><input type="text" value="'.unescape($xnn).'" maxlength="15" name="Gname"></td></tr>';
   }
 
   if (isset($_POST['priview'])) {
-    $tpl->set_out('txt', bbcode(unescape($txt)), 0);
+    //$tpl->set_out('txt', bbcode(unescape($txt)), 0);
+	$tpl->set_out('txt', FE_Vote2HTML(1, bbcode(unescape($txt)), true), 0);
   }
 
   $ar = array (
@@ -54,7 +55,9 @@ if (($_SESSION['klicktime'] + 15) > $dppk_time OR empty($topic) OR empty($txt) O
     'topic'   => escape_for_fields(unescape($topic)),
 	'fid'     => $fid,
 	'SMILIES' => getsmilies(),
-	'antispam'=> get_antispam('newtopic',1)
+	'antispam'=> get_antispam('newtopic',1),
+		'sel0'=> 'checked',
+		'sel1'=> ''
   );
   $tpl->set_ar_out($ar,1);
 
@@ -90,7 +93,7 @@ if (($_SESSION['klicktime'] + 15) > $dppk_time OR empty($topic) OR empty($txt) O
 
   db_query("UPDATE `prefix_topics` SET last_post_id = ".$pid." WHERE id = ".$tid);
   db_query("UPDATE `prefix_forums` SET posts = posts + 1, last_post_id = ".$pid.", topics = topics + 1 WHERE id = ".$fid);
-
+	FE_CreateVote($pid, $txt);
   # toipc als gelesen markieren
   $_SESSION['forumSEE'][$fid][$tid] = time();
 

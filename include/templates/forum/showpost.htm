@@ -1,40 +1,98 @@
-<table>
-    <tr> 
-        <td class="text-left">{SITELINK}</td>
-        <td class="text-right">{ANTWORTEN}</td>
-    </tr>
+	<link rel="stylesheet" type="text/css" href="include/includes/css/forum/userfarben.css" media="screen">
+
+<span style="font-weight: bold; font-size: 22px; font-family: Verdana, Arial, Helvetica, sans-serif;">{TOPICNAME}</span><br />
+{SITELINK}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="34%"><br />
+    {NEWTH} {ANTWORTEN}&nbsp;<br /></td>
+    <td width="66%" align="left" valign="bottom"><strong>{HMENU}</strong></td>
+  </tr>
 </table>
-<table class="border tablebordertop">
-    <tr class="Chead"> 
-        <th colspan="2" class="text-center"><strong>{TOPICNAME}</strong></th>
-    </tr>
-    {EXPLODE}
-    <tr class="{class}"> 
-        <td class="ilch_vertikal_top text-center"><a name="{id}"></a>{erst}<br><span class="smalfont">{rang}{avatar}{posts}</span></td>
-        <td class="ilch_vertikal_top">
-            <div class="text-left  ilch_float_l smalfont"><a class="smallfont" href="index.php?forum-showposts-{TID}#{id}" title="{i}. Post in diesem Thema">#</a>&nbsp;{date} {_lang_oclock}</div>
-            <div class="text-right ilch_float_r">{delete}&nbsp;{change}&nbsp;<a href="index.php?forum-newpost-{TID}-z{id}">{_lang_quote}</a>&nbsp;</div>
-            <br>
-            <hr>
-            <br>      								
-            {txt}
-            {sig}
-        </td>
-    </tr>
-    <tr> 
-        <td colspan="2" class="Cdark forum_cdark"></td>
-    </tr>
-    {EXPLODE}
-</table>
-<table>
-    <tr> 
-        <td class="text-left">{SITELINK}</td>
-        <td class="text-right">{ANTWORTEN}</td>
-    </tr>
-</table>
+<hr />
+<br />
+<table width="100%" border="0" cellspacing="1" cellpadding="2" class="border">
 {EXPLODE}
-<br>
-<strong>{_lang_administrattopic}</strong><br>
+	<tr class="Chead" > 
+		<td height="30"><b>Author</b></td> 
+		<td height="30">Nachricht</td>    
+	</tr>
+
+	<tr class="{class}"> 
+		<td width="20%" valign="top" align="center">
+			<a href="index.php?user-details-{erstid}"><strong>{erst}</strong></a> {land}<br />
+			<font class="smalfont">{rang}{posts}{avatar}{details}</font></td>
+		<td width="80%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align="left" valign="middle" width="50%"><span class="smalfont" style="float: left;">{date} Uhr</span></td>
+		<td width="50%" align="right" valign="middle" class="smalfont">&nbsp;
+			{THX}
+			<a class="forum" href="index.php?forum-inform-p{id}"><img src="include/images/forum/showpost/melden.png" width="16" height="16" alt="melden" align="absmiddle" title="löschen"/> melden</a>
+			{delete}
+			{change}
+			<a class="forum" href="index.php?forum-newpost-{TID}-z{id}"><img src="include/images/forum/showpost/zitieren.gif" width="16" height="16" alt="zitieren" align="absmiddle" title="zitieren"/> zitieren</a></td>
+	</tr>
+</table>
+                  <hr align="left" />
+      <br />{txt}{sig}<br />{danke}
+
+</td>
+  </tr>
+  <tr class="{class}">
+	  <td align="center" valign="middle">{pm} {email} {www}</td>
+	  <td align="left" valign="top"> 	        
+
+<script type="text/javascript">
+    var open = 1;
+    function dist_switch_{id}() {
+        if(open == 0) {
+            dist_close_{id}();
+        } else {
+            dist_open_{id}();
+        }
+    }
+
+    function dist_open_{id}() {
+        var plusid = 'plus' + '_{id}';
+        var hwid = 'hw' + '_{id}';
+        document.getElementById(plusid).style.height='0px';
+        document.getElementById(hwid).style.height='50px';
+        open = 0;
+    }
+
+    function dist_close_{id}() {
+        var plusid = 'plus' + '_{id}';
+        var hwid = 'hw' + '_{id}';
+        document.getElementById(plusid).style.height='9px';
+        document.getElementById(hwid).style.height='0px';
+        open = 1;
+    }
+</script>
+
+<fieldset onclick="dist_switch_{id}()" style="height: auto; border: 0px none; cursor: pointer;">
+    <img id="plus_{id}" src="include/images/icons/plus.gif" />
+    <small>Distanzierung</small>
+    <div class="smalfont" style="overflow: hidden; height: 0px;" id="hw_{id}">
+        <img id="plus_{id}" src="include/images/icons/minus.gif" />
+        Der Betreiber und die Moderatoren dieses Forums distanzieren sich hiermit Ausdrücklich von dem von <a href="index.php?user-details-{id}">{erst}</a> am {date} Uhr verfassten Beitrag. Sollte dieser Beitrag Ihre Rechte verletzen bitten wir um eine <a href="index.php?contact">Benachrichtigung</a>
+    <br /></div>
+</fieldset>
+	  </td>
+  </tr>
+        {EXPLODE}
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="31%">{NEWTH} {ANTWORTEN}</td>
+    <td width="45%" align="left"><strong>{HMENU}</strong></td>
+    <td width="24%" align="right">{SITELINK}</td>
+  </tr>
+</table>
+<br />
+{EXPLODE}
+<br />
+<strong><br />
+{_lang_administrattopic}</strong><br />
 <a href="javascript:renametopic()">{_lang_rename}</a>
 &nbsp;,&nbsp;
 <a href="index.php?forum-edittopic-{tid}-2">{_lang_delete}</a>
@@ -44,14 +102,15 @@
 <a href="index.php?forum-edittopic-{tid}-4-2">{status}</a>
 &nbsp;,&nbsp;
 <a href="index.php?forum-edittopic-{tid}-5">{festnorm}</a>
-<script type="text/javascript">
-<!--
-    function renametopic() {
-        var x = prompt("Bitte den neuen Namen vom Thema eintragen", "");
-        if (x) {
-            document.location.href = "index.php?forum-edittopic-{tid}-1=0&newTopic=" + x;
-        }
-    }
 
+<script language="JavaScript" type="text/javascript">
+<!--
+  function renametopic () {
+          var x = prompt ( "Bitte den neuen Namen vom Thema eintragen" , "" );
+                if ( x ) {
+                  document.location.href="index.php?forum-edittopic-{tid}-1=0&newTopic="+x;
+                }
+        }
+        
 //-->
 </script>

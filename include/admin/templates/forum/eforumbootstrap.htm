@@ -1,0 +1,71 @@
+
+<a class="btn btn-primary btn-sm" href="admin.php?forum">zur&uuml;ck</a><br>
+<div class="cont_loose">
+<form action="?forum-{ak}Forum" method="POST" name="form" class="form-horizontal" role="form">
+<input type="hidden" name="fid" value="{fid}">	
+<legend><h2><i class="fa fa-plus-square-o"></i> Neues Forum erstellen</h2></legend>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Name</label>
+    <div class="col-xs-6">
+      <input type="text" name="name" value="{name}" class="form-control">
+    </div>
+  </div>
+
+<legend>Forum Rechte</legend>
+<table class="table table-bordered">
+  <tr class="warning">
+	  <td class="text-center">lesen/sehen</td>
+		<td class="text-center">antworten</td>
+		<td class="text-center">Themen erstellen</td>
+	</tr>
+	<tr>
+				<td>
+				  <select class="form-control" name="view">
+					  {_list_view@<option%1 value="%2">%3</option>}
+					 </select>
+				</td>
+				<td>
+				  <select class="form-control" name="reply">
+					  {_list_reply@<option%1 value="%2">%3</option>}
+					 </select>
+				</td>
+				<td>
+				  <select class="form-control" name="start">
+					  {_list_start@<option%1 value="%2">%3</option>}
+					 </select>
+				</td>
+	</tr>
+</table>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Kategorie</label>
+    <div class="col-xs-6">
+      <select class="form-control" name="cid" onchange="sichtbar()">
+					  <!--{_list_kats@<option%1 value="%2">%3</option>}-->
+					  {kats}
+					 </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Beschreibung</label>
+    <div class="col-xs-6">
+<textarea rows="3" class="form-control" name="text">{text}</textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-xs-6">
+<input class="btn btn-primary" type="submit" value="{sub}" name="sub">
+    </div>
+  </div>
+</form>
+
+<div class="alert alert-info" role="alert">
+Hier k&ouml;nnen Sie ein Forum &auml;ndern oder ein neues erstellen.
+Bitte stellen Sie die Rechte des Forums <strong>sorgf&auml;lltig</strong> ein und
+      beachten Sie dabei bitte das die Rechte sich absteigend vererben.
+      Wenn also alle Leader ein Thema erstellen d&uuml;rfen k&ouml;nnen
+      die nat&uuml;rlich auch das Forum sehen/lesen und antworten. usw...<br>
+Benutzer mit dem Recht "SiteAdmin" oder h&ouml;her k&ouml;nnen in allen Foren moderieren.
+</div>
+
+</div>

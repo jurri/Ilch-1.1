@@ -1,28 +1,52 @@
-<table class="border">
-    <tr class="Chead">
-        <th colspan="2" class="text-center"><strong>{_lang_board}</strong></th>
-        <th class="text-center">{_lang_post}</th>
-        <th class="text-center">{_lang_topic}</th>
-        <th class="text-center">{_lang_lastpost}</th>
-    </tr>{EXPLODE}<tr class="Cdark">
-        <td colspan="5"><strong><a href="index.php?forum-showcat-{cid}">{cname}</a></strong></td>
-    </tr>{EXPLODE}<tr class="Cmite">
-        <td colspan="5"><strong>&nbsp;&nbsp;&raquo;<a href="index.php?forum-showcat-{cid}">{cname}</a></strong></td>
-    </tr>
-    {EXPLODE}
-    <tr class="Cnorm">
-        <td class="forumord tdweight5 text-center ilch_vertikal_middle"><img alt="" src="include/images/forum/{ORD}.gif"></td>
-        <td>
-            <a href="index.php?forum-showtopics-{id}">{name}</a><br>
-            <span class="smalfont">{besch}{mods}</span>
-        </td>
-        <td class="text-center smalfont">{posts}</td>
-        <td class="text-center smalfont">{topics}</td>
-        <td class="smalfont">
-            <a class="smalfont" title="{topicl}" href="index.php?forum-showposts-{tid}-p{page}#{pid}">{topic}</a>
-            <br>
-            {_lang_from}: {erst}
-        </td>
-    </tr>
-    {EXPLODE} 
+	<link rel="stylesheet" type="text/css" href="include/includes/css/forum/userfarben.css" media="screen">
+
+<table width="100%" cellpadding="4" cellspacing="1" class="border" border="0">
+	<tr class="Chead">
+		<td width="58%" colspan="2" align="center"><b>{_lang_board}</b></td>
+		<td width="6%">{_lang_post}</td>
+		<td width="6%">{_lang_topic}</td>
+		<td width="25%" align="center">{_lang_lastpost}</td>
+	</tr>
+{EXPLODE}
+	<tr class="Cmite">
+		<td colspan="5"><strong><a href="index.php?forum-showcat-{cid}">{cname}</a></strong></td>
+	</tr>
+{EXPLODE}
+	<tr class="Cnorm">
+		<td width="5%" align="center" valign="middle" class="Cdark"><img src="include/images/forum/{ORD}.png" border="0"></td>
+		<td class="Cnorm" width="53%"><a href="index.php?forum-showtopics-{id}">{name}</a>
+                  <br />
+                  <span class="smalfont">{besch}</span></td>
+		<td align="center" class="Cdark" width="6%"><img src="include/images/forum/beitrag.png" border="0" /><span class="smalfont">{posts}</span></td>
+		<td align="center" class="Cdark" width="6%"><img src="include/images/forum/themen.png" border="0" /><span class="smalfont">{topics}</span></td>
+		<td class="Cnorm" width="25%"><img src="include/images/forum/post.png" border="0" width="14" height="14"> <a class="smalfont" title="{topicl}" href="index.php?forum-showposts-{tid}-p{page}#{pid}">{topic}</a>
+                    <br />
+                    <span class="smalfont">{_lang_from}: {erst}</span></td>
+	</tr>{EXPLODE} 
+</table>
+<br /><br />
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="border">
+  <tr>
+    <td colspan="2" align="left" class="Chead" height="25"><div style="padding-left:10px;"><b>Foren - Legende</b></div></td>
+  </tr>
+  <tr class="Cnorm">
+  <td width="8%" height="40" align="center" valign="middle" class="Cdark"><img src="include/images/forum/legende/legend.png" width="36" height="36" border="0"></td>
+    <td width="92%" height="40" align="left" valign="middle">
+	<div style="padding-left:9px;">
+	<span class="Recht-9" style="font-size:10px;">Admin</span> , 
+	<span class="Recht-8" style="font-size:10px;">CoAdmin</span> , 
+	<span class="Recht-7" style="font-size:10px;">SiteAdmin</span> , 
+	<span class="Recht-6" style="font-size:10px;">Leader</span> ,
+	<span class="Recht-5" style="font-size:10px;">CoLeader</span> , 
+	<span class="Recht-4" style="font-size:10px;">Member</span> , 
+	<span class="Recht-3" style="font-size:10px;">Trialmember</span> , 
+	<span class="Recht-2" style="font-size:10px;">SuperUser</span> , 
+	<span class="Recht-1" style="font-size:10px;">User</span> , 
+	</div></td>
+  </tr>
+  <tr class="Cnorm">
+    <td class="Cdark" colspan="2" align="center" height="40"><img src="include/images/forum/ntop.png" alt="neue Beitr&auml;ge" border="0" align="absmiddle" /> &nbsp;{_lang_newposts}
+      &nbsp;&nbsp;<img src="include/images/forum/top.png" alt="keine neuen Beitr&auml;ge" border="0" align="absmiddle" /> &nbsp;{_lang_nonewposts}
+      &nbsp;&nbsp;<img src="include/images/forum/ctop.png" alt="Thema geschlossen" border="0" align="absmiddle" /> &nbsp; {_lang_topicclosed} &nbsp;&nbsp;<img src="include/images/forum/htop.png" alt="brisantes Thema" border="0" align="absmiddle" /> &nbsp; brisantes Thema</td>
+  </tr>
 </table>

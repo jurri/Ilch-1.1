@@ -1,61 +1,89 @@
-<table class="border">
-    <tr class="Chead">
-        <th colspan="2" class="text-center"><strong>{_lang_board}</strong></th>
-        <th class="text-center">{_lang_post}</th>
-        <th class="text-center">{_lang_topic}</th>
-        <th class="text-center">{_lang_lastpost}</th>
-    </tr>
-    {EXPLODE}
-    <tr class="Cdark">
-        <td colspan="5"><strong><a href="index.php?forum-showcat-{cid}">{cname}</a></strong></td>
-    </tr>
-    {EXPLODE}
-    <tr class="Cmite">
-        <td colspan="5"><strong>&nbsp;&nbsp;&raquo;<a href="index.php?forum-showcat-{cid}">{cname}</a></strong></td>
-    </tr>
-    {EXPLODE}
-    <tr class="Cnorm">
-        <td class="forumord tdweight5 text-center ilch_vertikal_middle"><img alt="" src="include/images/forum/{ORD}.gif"></td>
-        <td>
-            <a href="index.php?forum-showtopics-{id}">{name}</a>
-            <br>
-            <span class="smalfont">{besch}
-                {mods}
-            </span>
-        </td>
-        <td class="text-center smalfont">{posts}</td>
-        <td class="text-center smalfont">{topics}</td>
-        <td class="smalfont">
-            <a class="smalfont" title="{topicl}" href="index.php?forum-showposts-{tid}-p{page}#{pid}">{topic}</a>
-            <br>
-            {_lang_from}: {erst}
-        </td>
-    </tr>{EXPLODE}
+	<link rel="stylesheet" type="text/css" href="include/includes/css/forum/userfarben.css" media="screen">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script type="text/javascript">
+	$(function(){
+            $("#accordion").accordion({
+                heightStyle:    "content",
+                collapsible:    true,
+                active:         0,
+            });
+        });
+	</script>
+	
+<table width="100%" cellpadding="0" cellspacing="0" class="border" border="0">
+	<tr class="Chead" >
+		<td><table width="100%" cellpadding="4" cellspacing="1" border="0">
+		<td width="58%" colspan="2" align="center" valign="middle"class="Chead">{_lang_board}</td>
+		<td width="6%" align="center" valign="middle" class="Chead">{_lang_post}</td>
+		<td width="6%" align="center" valign="middle" class="Chead">{_lang_topic}</td>
+		<td width="25%" align="center" valign="middle" class="Chead">{_lang_lastpost}</td>
+</table></td>
+	</tr></table>
+	<div id="accordion">
+{EXPLODE}
+
+
+<table width="100%" cellpadding="4" cellspacing="1" class="border" border="0">{EXPLODE}<tr class="Cmite">
+		<td colspan="5"><strong> &nbsp; &nbsp; &raquo; <a href="index.php?forum-showcat-{cid}" >{cname}</a></strong></td>
+	</tr>
+{EXPLODE}
+	
+	{tab}
+{EXPLODE}
 </table>
-<table>
-    <tr>
-        <td class="text-left ilch_vertikal_top">
-            <a href="index.php?forum-markallasread">{_lang_markallasread}</a>
-        </td>
-        <td class="text-right ilch_vertikal_top">
-            <a href="index.php?forum-augt">{_lang_newtopicssincelastvisit}</a>
-            <br><a href="index.php?forum-aubt">{_lang_topicwithnoreply}</a>
-            <br><a href="index.php?forum-aeit">{_lang_ownposts}</a>
-        </td>
+</div>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" >
+	<tr>
+		<td width="50%" valign="top"><a href="index.php?forum-markallasread">{_lang_markallasread}</a></td>
+		<td width="50%" style="text-align: right" valign="top">
+			<a href="index.php?search-augt">{_lang_newtopicssincelastvisit}</a>
+			<br />
+			<a href="index.php?search-aubt">{_lang_topicwithnoreply}</a>
+			<br />
+			<a href="index.php?search-aeit">{_lang_ownposts}</a></td>
+	</tr>
 </table>
-<br>
-<div class="border">
-    <div class="ilch_case">
-        <div class="ilch_forum_in Cnorm">{_lang_it} {istsind} {gesonline} {_lang_guestsonline,ofthem} {useronline} {_if_{useronline}=='1'}{_lang_registredand}{/_endif}{_if_{useronline}!='1'}{_lang_registrededand}{/_endif} {gastonline} {_lang_guests}<br />
-            {userliste}
-            <br><hr>
-            <strong>{users}</strong> {_lang_membershaveritten} <strong>{posts}</strong> {_lang_postsin} <strong>{topics}</strong> {_lang_topics}
-        </div>
-    </div>
-</div>
-<div class="ilchforumiconsnoc">
-    <img class="forumord" src="include/images/forum/nord.gif" alt="neue Beitr&auml;ge"><span>{_lang_newposts}</span>
-    <img class="forumord" src="include/images/forum/ord.gif" alt="keine neuen Beitr&auml;ge"><span>{_lang_nonewposts}</span>
-    <img class="forumord" src="include/images/forum/cord.gif" alt="Thema geschlossen"><span>{_lang_topicclosed}</span>
-</div>
-{privmsgpopup}
+<!--/div-->
+     
+<br /><br />
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="border">
+  <tr>
+<td class="Chead" colspan="2" height="25" align="left"><div style="padding-left:10px;"><b>Es waren Online heute: </b></div></td>
+  </tr>
+  <tr>
+    <td height="40" align="center" valign="middle" class="Cdark"><img src="include/images/forum/legende/user.png" width="36" height="36" border="0"></td>
+    <td height="40" align="left" valign="middle" class="Cnorm"><span style="padding-left:9px;">{userliste_today}</span></td>
+  </tr>
+  <tr>
+<td class="Chead" colspan="2" height="25" align="left"><div style="padding-left:10px;"><b>Statistiken</b></div></td>
+  </tr>
+  <tr>
+    <td height="40" align="center" valign="middle" class="Cdark"><img src="include/images/forum/legende/statistik.png" width="36" height="36" border="0"></td>
+    <td height="40" align="left" valign="middle" class="Cnorm"><p style="padding-left:9px;"><span style="color:#FF0000">{users}</span> {_lang_membershaveritten} <span style="color:#FF0000">{posts}</span> {_lang_postsin} <span style="color:#FF0000">{topics}</span> {_lang_topics}</p></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" class="Chead" height="25"><div style="padding-left:10px;"><b>Foren - Legende</b></div></td>
+  </tr>
+  <tr class="Cnorm">
+  <td width="8%" height="40" align="center" valign="middle" class="Cdark"><img src="include/images/forum/legende/legend.png" width="36" height="36" border="0"></td>
+    <td width="92%" height="40" align="left" valign="middle">
+	<div style="padding-left:9px;">
+	<span class="Recht-9" style="font-size:10px;">Admin</span> , 
+	<span class="Recht-8" style="font-size:10px;">CoAdmin</span> , 
+	<span class="Recht-7" style="font-size:10px;">SiteAdmin</span> , 
+	<span class="Recht-6" style="font-size:10px;">Leader</span> ,
+	<span class="Recht-5" style="font-size:10px;">CoLeader</span> , 
+	<span class="Recht-4" style="font-size:10px;">Member</span> , 
+	<span class="Recht-3" style="font-size:10px;">Trialmember</span> , 
+	<span class="Recht-2" style="font-size:10px;">SuperUser</span> , 
+	<span class="Recht-1" style="font-size:10px;">User</span> , 
+	</div></td>
+  </tr>
+  <tr class="Cnorm">
+    <td class="Cdark" colspan="2" align="center" height="40"><img src="include/images/forum/ntop.png" alt="neue Beitr&auml;ge" border="0" align="absmiddle" /> &nbsp;{_lang_newposts}
+      &nbsp;&nbsp;<img src="include/images/forum/top.png" alt="keine neuen Beitr&auml;ge" border="0" align="absmiddle" /> &nbsp;{_lang_nonewposts}
+      &nbsp;&nbsp;<img src="include/images/forum/ctop.png" alt="Thema geschlossen" border="0" align="absmiddle" /> &nbsp; {_lang_topicclosed} &nbsp;&nbsp;<img src="include/images/forum/htop.png" alt="brisantes Thema" border="0" align="absmiddle" /> &nbsp; brisantes Thema</td>
+  </tr>
+</table>

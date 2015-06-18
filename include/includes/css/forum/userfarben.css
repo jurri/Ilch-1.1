@@ -1,0 +1,121 @@
+
+/*################################################	*/
+/* 			Klasse fuer den ADMIN	 				*/
+/*################################################	*/
+.Recht-9 {
+	color:#FF0000;
+	font-weight:bold;
+	text-decoration:none; }
+
+.Recht-9:hover {
+	color:#000000;
+	font-weight:bold;
+	text-decoration:underline; }
+
+/*################################################	*/
+/* 			Klasse fuer den CO ADMIN 				*/
+/*################################################	*/
+
+.Recht-8 {
+	color:#8A4B08;
+	text-decoration:none; }
+
+.Recht-8:hover {
+	color:#000000;
+	text-decoration:underline; }
+
+/*################################################	*/
+/* 			Klasse fuer den SITE ADMIN 				*/
+/*################################################	*/
+
+.Recht-7 {
+	color:#868A08;
+	text-decoration:none; }
+
+.Recht-7:hover {
+	color:#000000;
+	text-decoration:underline; }
+
+/*################################################	*/
+/* 			Klasse fuer den LEADER 					*/
+/*################################################	*/
+
+.Recht-6 {
+	color:#298A08;
+	text-decoration:none; }
+
+.Recht-6:hover {
+	color:#000000;
+	text-decoration:underline; }
+	
+/*################################################	*/
+/* 			Klasse fuer den COLEADER 				*/
+/*################################################	*/
+
+.Recht-5 {
+	color:#088A85;
+	text-decoration:none; }
+
+.Recht-5:hover {
+	color:#000000;
+	text-decoration:underline; }
+
+/*################################################	*/
+/* 			Klasse fuer den MEMBER	 				*/
+/*################################################	*/
+
+.Recht-4 {
+	color:#086A87;
+	text-decoration:none; }
+
+.Recht-4:hover {
+	color:#000000;
+	text-decoration:underline; }
+
+/*################################################	*/
+/* 			Klasse fuer den TRAIL MEMBER			*/
+/*################################################	*/
+
+.Recht-3 {
+	color:#0B0B61;
+	text-decoration:none; }
+
+.Recht-3:hover {
+	color:#000000;
+	text-decoration:underline; }
+	
+/*################################################	*/
+/* 			Klasse fuer den SUPERUSER 				*/
+/*################################################	*/
+
+.Recht-2 {
+	color:#A901DB;
+	text-decoration:none; }
+
+.Recht-2:hover {
+	color:#000000;
+	text-decoration:underline; }
+
+/*################################################	*/
+/* 			Klasse fuer den USER	 				*/
+/*################################################	*/
+
+.Recht-1 {
+	color:#585858;
+	text-decoration:none; }
+
+.Recht-1:hover {
+	color:#000000;
+	text-decoration:underline; }
+
+
+
+
+
+/* Klasse fuer Infomationen bei der Beitragsansicht
+z.B Wohnort: | Dabei seit:  | Letzter Login:  */
+.info {
+	color:#999999;
+	font-weight:bold;
+	text-decoration:none; }
+

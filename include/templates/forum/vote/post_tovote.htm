@@ -1,0 +1,10 @@
+<form method="post" action="index.php?forum-vote-{post_id}"><p>
+<span style="font-size:13px; font-weight:bold;">{question}</span><br />
+{EXPLODE}
+<input type="radio" name="vote" value="{id}">{option}
+{EXPLODE}
+{_if_{showResult}=='1'}
+<input type="button" name="showerg" value="Ergebnis anzeigen" onclick="window.open ('index.php?forum-vote-{post_id}-showerg', 'finduser', 'status=no,scrollbars=yes,height=200,width=350');">
+{/_endif}
+<input type="hidden" name="h_pk" value="{pppk}"/>
+<input type="submit" value="Abstimmen"></p></form>

@@ -1,7 +1,7 @@
 <?php
 // Copyright by: Manuel Staechele
 // Support: www.ilch.de
-// Modded by Mairu fuer News Extended
+// Modded by Mairu für News Extended
 defined ('main') or die ('no direct access');
 defined ('admin') or die ('only admin access');
 
@@ -111,7 +111,7 @@ function setArchiv($id, $old) {
     }
     return $resp;
 }
-// xajax fÃ¼r vorschau
+// xajax für vorschau
 $xajax = new xajax();
 $xajax->configureMany(array('decodeUTF8Input' => true ,'characterEncoding' => 'ISO-8859-1', 'requestURI' => 'admin.php?news-ajax'));
 
@@ -183,16 +183,20 @@ if (!empty($_REQUEST['um'])) {
     if ($um == 'insert') {
         // insert
         $text = escape($_POST['txt'], 'textarea');
+        $preview = escape($_POST['txt_view'], 'textarea');
+        $pimg = escape($_POST['img_view'], 'text');
         if ($_POST['katLis'] == 'neu') {
             $_POST['katLis'] = $_POST['kat'];
         }
 
-        db_query("INSERT INTO `prefix_news` (news_title,user_id,news_time,news_recht,news_groups,news_kat,news_text,html,`show`,archiv,endtime)
-		VALUES ('" . $_POST['titel'] . "'," . $_SESSION['authid'] . ",FROM_UNIXTIME(".$newscreatetime.")," . $grecht . "," . $groups . ",'" . $_POST['katLis'] . "','" . $text . "','" . $_POST['html'] . "',$show,$archiv,$endtime)");
+        db_query("INSERT INTO `prefix_news` (news_title,user_id,news_time,news_recht,news_groups,news_kat,news_text,html,`show`,archiv,endtime,news_preview,img_preview)
+		VALUES ('" . $_POST['titel'] . "'," . $_SESSION['authid'] . ",FROM_UNIXTIME(".$newscreatetime.")," . $grecht . "," . $groups . ",'" . $_POST['katLis'] . "','" . $text . "','" . $_POST['html'] . "',$show,$archiv,$endtime,'$preview','$pimg')");
         // insert
     } elseif ($um == 'change') {
         // edit
         $text = escape($_POST['txt'], 'textarea');
+        $preview = escape($_POST['txt_view'], 'textarea');
+        $pimg = escape($_POST['img_view'], 'text');
 
         if ($_POST['katLis'] == 'neu') {
             $_POST['katLis'] = $_POST['kat'];
@@ -208,6 +212,8 @@ if (!empty($_REQUEST['um'])) {
 				`show`     = ' . $show . ',
 				archiv     = ' . $archiv . ',
 				endtime     = ' . $endtime . ',
+                news_preview = "'.$preview.'",
+                img_preview = "'.$pimg.'",
                 news_text  = "' . $text . '"' . $newschangesqladd . ' WHERE news_id = "' . $_POST['newsID'] . '" LIMIT 1');
         $edit = $_POST['newsID'];
     }
@@ -248,6 +254,8 @@ if (empty ($doNoIn)) {
         $Fueber = '';
         $Fstext = '';
         $Ftxt = '';
+        $Ftxt_view = '';
+        $Fimg_view = '';
         $Fgrecht = 1023;
         $Fgroups = 0;
         $FkatLis = '';
@@ -272,6 +280,8 @@ if (empty ($doNoIn)) {
         $Fgrecht = $row->news_recht;
         $Fgroups = $row->news_groups;
         $FkatLis = $row->news_kat;
+        $Ftxt_view = $row->news_preview;
+        $Fimg_view = $row->img_preview;
         $Fsub = '&Auml;ndern';
         $Fhtml = $row->html == 1 ? 'switch_html();' : '';
         if ($row->show == 0) {
@@ -313,6 +323,8 @@ if (empty ($doNoIn)) {
         'MPL' => $MPL,
         'UEBER' => $Fueber,
         'txt' => $Ftxt,
+        'txt_view' => $Ftxt_view,
+        'img_view' => $Fimg_view,
         'SMILIS' => getsmilies(),
         // 'grecht' => dbliste($Fgrecht,$tpl,'grecht',"SELECT id,name FROM prefix_grundrechte ORDER BY id DESC"),
         'KATS' => getKats($FkatLis),
@@ -333,17 +345,18 @@ if (empty ($doNoIn)) {
     $ar['grecht'] = '';
     $qry = db_query('SELECT ABS(id) as id, name FROM prefix_grundrechte ORDER BY id');
     while ($r = db_fetch_assoc($qry)) {
-        $ar['grecht'] .= '<span style="white-space: nowrap; margin-right: 5px;"><input type="checkbox" id="grecht_' . $r['id'] . '" name="grecht_' . $r['id'] . '" ' .
-        (($Fgrecht == ($Fgrecht | pow(2, $r['id']))) ? 'checked="checked"' : '') . ' />' .
-        '<label for="grecht_' . $r['id'] . '" style="font-weight: normal;margin-left:3px;"->' . $r['name'] . "</label></span>\n";
+        //$ar['grecht'] .= '<span style="white-space: nowrap; margin-right: 5px;"><input type="checkbox" id="grecht_' . $r['id'] . '" name="grecht_' . $r['id'] . '" ' .
+		$ar['grecht'] .= '<div class="checkbox"><label for="grecht_' . $r['id'] . '"><input type="checkbox" id="grecht_' . $r['id'] . '" name="grecht_' . $r['id'] . '" ' .
+        (($Fgrecht == ($Fgrecht | pow(2, $r['id']))) ? 'checked="checked"' : '') . ' />' . $r['name'] . "</label></div>";
+        //'<label for="grecht_' . $r['id'] . '">' . $r['name'] . "</label>\n";
+		//'<label for="grecht_' . $r['id'] . '">' . $r['name'] . "</label>\n";
     }
     // Groups
     $ar['groups'] = '';
     $qry = db_query('SELECT id, name FROM prefix_groups ORDER BY id');
     while ($r = db_fetch_assoc($qry)) {
-        $ar['groups'] .= '<span style="white-space: nowrap; margin-right: 5px;"><input type="checkbox" id="groups_' . $r['id'] . '" name="groups_' . $r['id'] . '" ' .
-        (($Fgroups == ($Fgroups | pow(2, $r['id']))) ? 'checked="checked"' : '') . ' />' .
-        '<label for="groups_' . $r['id'] . '" style="font-weight: normal;margin-left:3px;">' . $r['name'] . "</label></span>\n";
+        $ar['groups'] .= '<div class="checkbox"><label for="groups_' . $r['id'] . '"><input type="checkbox" id="groups_' . $r['id'] . '" name="groups_' . $r['id'] . '" ' .
+        (($Fgroups == ($Fgroups | pow(2, $r['id']))) ? 'checked="checked"' : '') . ' />' . $r['name'] . "</label></div>";
     }
 
     $tpl->set_ar_out($ar, 0);
@@ -364,21 +377,21 @@ if (empty ($doNoIn)) {
     $opts = db_fetch_object(db_query("SELECT v1 as topnews, v2 as koms,v3 as pmempf,v4 as kat FROM prefix_allg WHERE k = 'news'"));
 
     while ($row = db_fetch_object($erg)) {
-        $class = ($class == '' ? '' : '');
+        $class = ($class == 'Cmite' ? 'Cnorm' : 'Cmite');
 
         $tpl->set_ar_out(array ('ID' => $row->news_id,
                 'class' => $class,
                 'TITEL' => $row->news_title,
-                'KAT' => $row->news_kat,
-                'sperre' => $row->show >= 1 ? '<span style="color:#2D9600;" class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>' : '<span style="color:#FF0000;" class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>',
+				'KAT' => $row->news_kat,
+                'sperre' => $row->show >= 1 ? 'jep' : 'nop',
                 'sperren' => $row->show >= 1 ? 'Sperren' : 'Freischalten',
                 'title' => "Ersteller: " . get_n($row->user_id) . " ($row->news_time)" . (is_null($row->editor_id) ? '' : "\nGe&auml;ndert von: " . get_n($row->editor_id) . " ($row->edit_time)"),
-                'topnews' => $row->news_id == $opts->topnews ? '<span style="color:#FF6600" rel="tooltip" title="als Topnews gesetzt" class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>' : '<span rel="tooltip" title="als Topnews setzen" class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>',
-                'archiv' => (($row->archiv == 1) OR ($row->archiv == 2 AND $row->endtime < time())) ? '<span rel="tooltip" title="News im Archiv">A</span>' : '<span rel="tooltip" title="News normal">N</span>'
+                'topnews' => $row->news_id == $opts->topnews ? 'ok' : 'leer',
+                'archiv' => (($row->archiv == 1) OR ($row->archiv == 2 AND $row->endtime < time())) ? 'A' : 'N'
                 ) , 4);
     }
     // e d i t , d e l e t e
-    // MÃ¶gliche PM-EmpfÃ¤nger
+    // Mögliche PM-Empfänger
     $pmq = db_query("SELECT a.id, a.name FROM prefix_user a LEFT JOIN prefix_modulerights b ON b.mid = 2 AND b.uid = a.id WHERE a.recht <= -8 OR b.mid IS NOT NULL");
     $pmempf = '';
     $pmar = explode('#', $opts->pmempf);

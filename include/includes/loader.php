@@ -24,8 +24,8 @@ if (version_compare(PHP_VERSION, '5.3') == -1) {
 
 # load all needed func
 require_once('include/includes/func/db/mysql.php');
-
 require_once('include/includes/func/calender.php');
+require_once('include/includes/func/funkt.php');
 require_once('include/includes/func/user.php');
 require_once('include/includes/func/escape.php');
 require_once('include/includes/func/allg.php');
@@ -35,6 +35,7 @@ require_once('include/includes/func/profilefields.php');
 require_once('include/includes/func/statistic.php');
 require_once('include/includes/func/listen.php');
 require_once('include/includes/func/forum.php');
+require_once('include/includes/func/forumex.php');
 require_once('include/includes/func/warsys.php');
 require_once('include/includes/func/ic_mime_type.php');
 

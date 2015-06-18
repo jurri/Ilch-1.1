@@ -1,50 +1,175 @@
-<script type="text/javascript" src="include/includes/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
-    function checkEmail() {
-        var v = document.forms['newsletter'].elements['auswahl'].value;
-        var e = document.getElementById('cb_html_cont');
-        if (v.match(/^E/)) {
-            e.style.display = '';
-        } else {
-            e.style.display = 'none';
-        }
-    }
+function checkMail(){
+	var email = document.getElementById('cb_html_cont');
+	var radiom = document.getElementById('r_mail');
+	var radiop = document.getElementById('r_pm');
+	if(radiop.checked == true){
+		email.style.display = 'none';
+		radiom.checked = false;
+	}else if(radiom.checked == true){
+		email.style.display = '';
+		radiop.checked = false;
+	}
+}
+
+var checked = 0;
+function checkUser(){	
+	var check = document.getElementById('ch_one_user').value;
+	if(check == 1 && checked == 0){
+		document.getElementById('rechte_show').style.visibility="hidden";
+		document.getElementById('all_user_show').style.visibility="visible";
+		checked = 1;
+	}else{
+		document.getElementById('rechte_show').style.visibility="visible";
+		document.getElementById('all_user_show').style.visibility="hidden";
+		checked = 0;
+	}	
+}
 </script>
-<legend><h2><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Newsletter</h2></legend>
-<div class="panel panel-success">
-    <div class="panel-heading text-center"><h4>Hier kannst du einen Newsletter verschicken!</h4></div>
-    <div class="panel-body" style="margin:10px;">
-        <form action="admin.php?newsletter" method="post" name="newsletter" class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Empf&auml;nger</label>
-                <div class="col-sm-10">
-                    <label class="radio-inline"><input type="radio" name="tempRecipients" onClick="xajax_XAJAX_changeList('Normal')"> Normal</label><label class="radio-inline"><input type="radio" name="tempRecipients" onClick="xajax_XAJAX_changeList('Grundrechte')"> nach Rechten</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Ausw&auml;hlen</label>
-                <div class="col-sm-6" id="list">
-                    <select name="auswahl" class="form-control">
-                        <option selected="selected" disabled="disabled">Bitte erst den Empf&auml;nger ausw&auml;hlen</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Betreff</label>
-                <div class="col-sm-6" id="list">
-                    <input type="text" name="bet" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <label></label>
-                <textarea class="form-control" rows="25" id="txt" name="txt"></textarea>
-                <script type="text/javascript">
-                    CKEDITOR.replace('txt');
-                </script>
-            </div>
-            <div class="text-center">
-                <input type="submit" value="Newsletter senden" name="SEND" class="btn btn-primary">
-            </div>
-        </form>
-    </div>
-</div>
+
+<form action="admin.php?newsletter" method="post" name="newsletter">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td><img src="include/images/icons/admin/newsletter.png" /></td>
+	<td width="30"></td><td valign="bottom"><h1>Newsletter</h1></td>
+</tr><tr>
+	<td><img src="include/images/icons/admin/backup.png" /></td>
+	<td width="30"></td><td><input name="sub_archiv" value="Newsletter Archiv" type="submit"/></td>
+</tr>
+</table>
+
+{antispam}
+<table width="100%" border="0" cellspacing="1" cellpadding="2" class="border">
+<tr>
+    <td colspan="2" height="25" class="Cdark">Hier kannst du einen Newsletter verschicken!</td>
+</tr><tr>
+	<td class="Cmite" style="font-weight:bold;">Versandart</td>
+	<td class="Cnorm">
+		|<input onchange="checkMail()" name="r_mail_pm" id="r_mail" value="mail" type="radio" checked />Email |
+		<input onchange="checkMail()" name="r_mail_pm" id="r_pm" value="pm" type="radio"/>PrivateNachricht |
+	</td>
+</tr><tr>
+    <td class="Cmite" style="font-weight:bold;">Empf&auml;nger<br/>Gruppe</td>
+	<td><div id="rechte_show">
+		<table>
+		<tr>
+			<td class="Cmite" align="right"><small>(Grundrechte)</small></td>
+			<td class="Cnorm"><input name="ch_all_recht" value="1" type="checkbox" checked />Alle Rechte</td>
+			<td class="Cnorm">{grecht}</td>
+		</tr><tr>
+			<td class="Cmite" align="right"><small>(Gruppen/Teams)</small></td>
+			<td class="Cnorm"><input name="ch_all_group" value="1" type="checkbox" checked />Alle Gruppen</td>
+			<td class="Cnorm">{groups}</td>
+		</tr>
+		</table>
+	</div></td>
+    <!--td class="Cnorm"><input type="radio" name="tempRecipients" onClick="xajax_XAJAX_changeList('Normal')" /> Normal&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tempRecipients" onClick="xajax_XAJAX_changeList('Grundrechte')" /> nach Rechten</td-->
+</tr><tr>
+    <td class="Cmite" style="font-weight:bold;">Empf&auml;nger<br/>User</td>
+    <td>
+		<table>
+		<tr>
+			<td class="Cnorm"><input name="ch_one_user" id="ch_one_user" value="1" type="checkbox" onchange="checkUser()" />Nur an einen User Schicken.</td>
+			
+			<td class="Cnorm"><div id="all_user_show" style="visibility:hidden;">
+				{auser}
+			</div></td>		
+		</tr>
+		</table>
+	</td>
+</tr><tr>
+    <td class="Cmite" style="font-weight:bold;">Betreff</td>
+    <td class="Cnorm"><input type="text" name="bet" size="50"></td>
+</tr><tr>
+    <td class="Cmite" valign="top" style="font-weight:bold;">Text</td>
+    <td class="Cnorm">
+		<table>
+		<tr>
+			<td><textarea cols="75" rows="25" name="txt"></textarea></td>
+			<td align="top">
+				<div style="width:100%; height:400px; overflow:auto;"><table>
+				<tr>
+					<th colspan="2">User mit aktiviertem Newsletter</th>
+				</tr>
+				{nlaktivuser}
+				</table></div>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr><tr class="Cdark">
+    <td>&nbsp;</td>
+    <td>
+        <span id="cb_html_cont"><input type="checkbox" name="html" id="cb_html"><label for="cb_html">E-Mail als HTML senden</label></span>
+        <input type="submit" value="Absenden" name="SEND" />
+    </td>
+</tr>
+</table>
+
+</form>
+{EXPLODE}
+
+<form action="admin.php?newsletter" method="post" name="newsletter">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td><img src="include/images/icons/admin/newsletter.png" /></td>
+	<td width="30"></td><td valign="bottom"><h1>Newsletter</h1></td>
+</tr><tr>
+	<td><img src="include/images/icons/admin/self_page_box.png" /></td>
+	<td width="30"></td><td><input name="sub_create" value="Newsletter erstellen" type="submit"/></td>
+</tr>
+</table>
+
+
+<table width="100%" border="0" cellspacing="1" cellpadding="2" class="border">
+<tr>
+	<th class="Cmite">Datum</th>
+	<th class="Cmite">Betreff</th>
+	<th class="Cmite">Text</th>
+	<th class="Cmite">Art</th>
+	<th class="Cmite">Anzahl</th>
+</tr><tr class="Cdark">
+{archiv}
+</tr>
+</table>
+
+</form>
+{EXPLODE}
+
+<form action="admin.php?newsletter" method="post" name="newsletter">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td><img src="include/images/icons/admin/newsletter.png" /></td>
+	<td width="30"></td><td valign="bottom"><h1>Newsletter</h1></td>
+</tr><tr>
+	<td><img src="include/images/icons/admin/self_page_box.png" /></td>
+	<td width="30"></td><td><input name="sub_create" value="Newsletter erstellen" type="submit"/></td>
+</tr><tr>
+	<td><img src="include/images/icons/admin/backup.png" /></td>
+	<td width="30"></td><td><input name="sub_archiv" value="Newsletter Archiv" type="submit"/></td>
+</tr>
+</table>
+
+
+<table width="100%" border="0" cellspacing="1" cellpadding="2" class="border">
+<tr>
+	<th class="Cmite">Datum</th>
+	<th class="Cmite">Betreff</th>
+	<th class="Cmite">Text</th>
+	<th class="Cmite">Art</th>
+	<th class="Cmite">Anzahl</th>
+</tr>
+{archiv}
+</table>
+<hr/>
+<table width="100%" border="0" cellspacing="1" cellpadding="2" class="border">
+<tr>
+	<th class="Cmite">Name</th>
+	<th class="Cmite">EMail</th>
+	<th class="Cmite">Newsletter</th>
+</tr>
+{aruser}
+</table>
+
+</form>
+{EXPLODE}
