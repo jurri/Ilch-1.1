@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jurri/Ilch-1.1.svg?branch=rr)](https://travis-ci.org/jurri/Ilch-1.1)
 # Ilch-1.1 
 ## update rr
 Ilch 1.1rr ist der direkte Nachfolger der Ilch Versionen 1.1p & 1.1q.
